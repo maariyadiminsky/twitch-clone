@@ -16,7 +16,7 @@ class GoogleAuth extends Component {
                 // api is ready to be used so get auth instance
                 this.auth = window.gapi.auth2.getAuthInstance();
 
-                // check if user is signed in on app load
+                // check if user is signed in on initial load
                 this.setState({ isSignedIn: this.auth.isSignedIn.get() });
 
                 // event listener that listens if user has signed in
@@ -44,6 +44,7 @@ class GoogleAuth extends Component {
     renderButtonForAuthUser() {
         const { isSignedIn } = this.state;
 
+        // null means, on initial load
         if (isSignedIn == null) return "Loading...";
         return isSignedIn ? "Sign Out" : "Sign In";
     }
