@@ -49,7 +49,6 @@ class GoogleAuth extends Component {
         return isSignedIn ? "Sign Out" : "Sign In";
     }
 
-
     render() {
         return (
             <button className="ui red google button" onClick={this.handleSetUserAuthChange}>
