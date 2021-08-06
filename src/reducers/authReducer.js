@@ -5,11 +5,12 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    if (action.type === SIGN_USER_IN) {
-        
-    } else if (action.type === SIGN_USER_OUT) {
-        
-    };
-
-    return state.isSignedIn;
+    switch(action.type) {
+        case SIGN_USER_IN:
+            return { ...state, isSignedIn: true };
+        case SIGN_USER_OUT:
+            return { ...state, isSignedIn: false };
+        default:
+            return state;
+    }
 }
