@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signUserIn, signUserOut } from "../actions";
 import { EMAIL } from "../const";
 
 // NOTE: Google API's authentication status persists between page reloads
@@ -32,13 +34,15 @@ class GoogleAuth extends Component {
 
     handleSetUserAuthChange = () => {
         const { isSignedIn } = this.state;
+        const { signUserIn, signUserOut } = this.props;
 
         // nothing should happen while google api is still loading sign in status
         if (isSignedIn == null) return;
 
         // if signed in, then when user clicks they want to sign out 
         // if signed out, then when user clicks they want to sign in
-        isSignedIn ? this.auth.signOut() : this.auth.signIn();
+        // isSignedIn ? this.auth.signOut() : this.auth.signIn();
+        isSignedIn ? signUserOut() : signUserIn();
     }
 
     renderButtonForAuthUser() {
@@ -59,4 +63,4 @@ class GoogleAuth extends Component {
     }
 }
 
-export default GoogleAuth;
+export default connect(null, { signUserIn, signUserOut })(GoogleAuth);
