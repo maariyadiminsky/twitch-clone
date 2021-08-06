@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signUserIn, signUserOut } from "../actions";
-import { EMAIL } from "../const";
+import { LOADING, EMAIL, SIGN_IN, SIGN_OUT } from "../const";
 
 // NOTE: Google API's authentication status persists between page reloads
 class GoogleAuth extends Component {
@@ -49,8 +49,8 @@ class GoogleAuth extends Component {
         const { isSignedIn } = this.state;
 
         // null means, on initial load
-        if (isSignedIn == null) return "Loading...";
-        return isSignedIn ? "Sign Out" : "Sign In";
+        if (isSignedIn == null) return LOADING;
+        return isSignedIn ? SIGN_OUT : SIGN_IN;
     }
 
     render() {
