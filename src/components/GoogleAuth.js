@@ -39,22 +39,22 @@ class GoogleAuth extends Component {
 
     // for when user clicks sign in/ sign out auth button
     handleUpdateUserAuth = () => {
-        const { isSignedIn } = this.props;
+        const { isUserSignedIn } = this.props;
 
         // nothing should happen while google api is still loading sign in status
-        if (isSignedIn === null) return;
+        if (isUserSignedIn === null) return;
 
         // if signed in, then when user clicks they want to sign out 
         // if signed out, then when user clicks they want to sign in
-        isSignedIn ? this.handleShouldUserSignIn(false) : this.handleShouldUserSignIn(true);
+        isUserSignedIn ? this.handleShouldUserSignIn(false) : this.handleShouldUserSignIn(true);
     }
 
     renderButtonForAuthUser() {
-        const { isSignedIn } = this.props;
+        const { isUserSignedIn } = this.props;
 
         // null means, on initial load
-        if (isSignedIn == null) return LOADING;
-        return isSignedIn ? SIGN_OUT : SIGN_IN;
+        if (isUserSignedIn == null) return LOADING;
+        return isUserSignedIn ? SIGN_OUT : SIGN_IN;
     }
 
     render() {
@@ -67,8 +67,8 @@ class GoogleAuth extends Component {
     }
 }
 
-const mapStateToProps = ({ auth: { isSignedIn } }) => ({
-    isSignedIn
+const mapStateToProps = ({ auth: { isUserSignedIn } }) => ({
+    isUserSignedIn
 });
 
 export default connect(mapStateToProps, { signUserIn, signUserOut })(GoogleAuth);
