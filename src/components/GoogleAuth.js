@@ -21,12 +21,12 @@ class GoogleAuth extends Component {
 
                 // event listener that listens if user has signed in
                 // callback passed in will get the boolean value
-                this.auth.isSignedIn.listen(this.handleOnUserAuthChange);
+                this.auth.isSignedIn.listen(this.handleShouldUserSignIn);
             });
         });
     }
 
-    // for setting
+    // for setting user sign in status
     handleShouldUserSignIn = (shouldUserSignIn = null) => {
         const { signUserIn, signUserOut } = this.props;
 
@@ -34,8 +34,10 @@ class GoogleAuth extends Component {
         if (shouldUserSignIn === null) return;
 
         // sign user in or out
-        shouldUserSignIn ? signUserIn() : signUserOut();
+        shouldUserSignIn ? signUserIn(this.getUserId()) : signUserOut(this.getUserId());
     }
+
+    getUserId = () => this.auth.currentUser.get().getId();
 
     // for when user clicks sign in/ sign out auth button
     handleUpdateUserAuth = () => {
@@ -46,7 +48,13 @@ class GoogleAuth extends Component {
 
         // if signed in, then when user clicks they want to sign out 
         // if signed out, then when user clicks they want to sign in
-        isUserSignedIn ? this.handleShouldUserSignIn(false) : this.handleShouldUserSignIn(true);
+        if (isUserSignedIn) {
+            this.auth.signOut();
+            this.handleShouldUserSignIn(false);
+        } else {
+            this.auth.signIn();
+            this.handleShouldUserSignIn(true);
+        }
     }
 
     renderButtonForAuthUser() {
