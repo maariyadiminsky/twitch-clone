@@ -9,11 +9,29 @@ class StreamList extends Component {
         getStreams();
     }
 
+    // if the incoming stream has the same userId as the
+    // current logged in user--render the buttons
+    renderActionButtonsTry(streamUserId){
+        const { currentLoggedInUserId } = this.props;
+
+        if (currentLoggedInUserId === streamUserId) {
+            return (
+                <div className="right floated content">
+                    <button className="ui button">Edit</button>
+                    <button className="ui button">Remove</button>
+                </div>
+            );
+        }
+
+        return "";
+    }
+
     renderStreams() {
         const { streams } = this.props;
 
-        return streams.map(({ id, title, description }) => (
+        return streams.map(({ id, title, description, userId }) => (
             <div className="item" key={id}>
+                {this.renderActionButtonsTry(userId)}
                 <i className="large middle aligned icon tv" />
                 <div className="content">
                     {title}
@@ -38,8 +56,9 @@ class StreamList extends Component {
 }
 
 // turn objects into array for easier mapping
-const mapStateToProps = ({ streams }) => ({
-    streams: Object.values(streams)
-})
+const mapStateToProps = ({ streams, auth: { userId } }) => ({
+    streams: Object.values(streams),
+    currentLoggedInUserId: userId
+});
 
 export default connect(mapStateToProps, { getStreams })(StreamList);
