@@ -65,9 +65,11 @@ class GoogleAuth extends Component {
         return isUserSignedIn ? SIGN_OUT : SIGN_IN;
     }
 
+    renderButtonLoaderTry = () => this.props.isUserSignedIn == null && "loading";
+
     render() {
         return (
-            <button className="ui red google button" onClick={this.handleUpdateUserAuth}>
+            <button className={`ui red ${this.renderButtonLoaderTry()} button`} onClick={this.handleUpdateUserAuth}>
                 <i className="google icon" />
                 {this.renderButtonForAuthUser()}
             </button>
