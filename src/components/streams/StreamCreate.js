@@ -12,7 +12,7 @@ class StreamCreate extends Component {
         );
     }
 
-    renderInput = ({ label, input, meta: { error, touched, submitFailed }}) => {
+    renderInput = ({ label, input, meta: { touched, submitFailed, error }}) => {
         let hasBeenTouchedAndHasError = (touched || submitFailed) && error;
 
         return (
@@ -27,7 +27,7 @@ class StreamCreate extends Component {
     onSubmit = (formValues) => {
         const { createStream } = this.props;
 
-        // createStream(formValues);
+        createStream(formValues);
     }
 
     render() {
@@ -42,9 +42,7 @@ class StreamCreate extends Component {
 }
 
 const validate = ({ title, description }) => {
-    const errors = {};
-
-    console.log(`In validate: title: ${title}, desc: ${description}`);
+    let errors = {};
 
     if (!title) {
         errors.title = "Streams must have a title"
