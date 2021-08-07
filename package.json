@@ -13,6 +13,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
+    "redux-form": "^8.3.7",
     "web-vitals": "^1.0.1",
     "yarn": "^1.22.11"
   },
@@ -28,7 +29,12 @@
       "react-app/jest"
     ],
     "rules": {
-      "import/no-anonymous-default-export": [2, {"allowArrowFunction": true}] 
+      "import/no-anonymous-default-export": [
+        2,
+        {
+          "allowArrowFunction": true
+        }
+      ]
     }
   },
   "browserslist": {
