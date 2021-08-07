@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
 
 class StreamCreate extends Component {
     renderInputError(error) {
@@ -10,8 +12,8 @@ class StreamCreate extends Component {
         );
     }
 
-    renderInput = ({ label, input, meta: { error, touched }}) => {
-        let hasBeenTouchedAndHasError = touched && error;
+    renderInput = ({ label, input, meta: { error, touched, submitFailed }}) => {
+        let hasBeenTouchedAndHasError = (touched || submitFailed) && error;
 
         return (
             <div className={`field ${hasBeenTouchedAndHasError && "error"}`}>
@@ -22,7 +24,10 @@ class StreamCreate extends Component {
         );
     }
 
-    onSubmit(formValues) {
+    onSubmit = (formValues) => {
+        const { createStream } = this.props;
+
+        // createStream(formValues);
     }
 
     render() {
@@ -39,6 +44,8 @@ class StreamCreate extends Component {
 const validate = ({ title, description }) => {
     const errors = {};
 
+    console.log(`In validate: title: ${title}, desc: ${description}`);
+
     if (!title) {
         errors.title = "Streams must have a title"
     }
@@ -50,7 +57,9 @@ const validate = ({ title, description }) => {
     return errors;
 }
 
-export default reduxForm({
+const FormWrapper = reduxForm({
     form: "streamCreate",
     validate
 })(StreamCreate);
+
+export default connect(null, { createStream })(FormWrapper);

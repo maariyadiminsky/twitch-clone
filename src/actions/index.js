@@ -1,4 +1,4 @@
-import { streamsAPI } from "../apis/streamsAPI";
+import streamsAPI from "../apis/streamsAPI";
 import { STREAMS_ENDPOINT } from "../apis/const";
 
 import { SIGN_USER_IN, SIGN_USER_OUT } from "./types";
