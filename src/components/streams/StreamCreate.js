@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { createStream } from "../../actions";
+import { createStream } from "../../actions/streams";
 
 class StreamCreate extends Component {
     renderInputError(error) {

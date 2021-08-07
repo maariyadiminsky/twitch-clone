@@ -9,8 +9,7 @@ const FindAPIUrl = () => {
         console.log("in dev");
         return process.env.REACT_APP_DEV_API_URL;
     } 
-
-    console.log(`In find API URL: process.NODE_ENV:${process.NODE_ENV}, process.ENV.REACT_APP_DEV_API_URL:${process.ENV.REACT_APP_DEV_API_URL}`);
+    
     return "";
 }
 
