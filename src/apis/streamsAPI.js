@@ -1,17 +1,7 @@
 import axios from "axios";
 
-import { DEVELOPMENT, PRODUCTION } from "../const";
-
-const FindAPIUrl = () => {
-    if (process.env.NODE_ENV === PRODUCTION) {
-        return process.env.REACT_APP_PROD_API_URL;
-    } else if (process.env.NODE_ENV === DEVELOPMENT) {
-        return process.env.REACT_APP_DEV_API_URL;
-    } 
-    
-    return "";
-}
+import { FindBaseURL } from "../utils";
 
 export default axios.create({
-    baseURL: FindAPIUrl()
+    baseURL: FindBaseURL()
 });

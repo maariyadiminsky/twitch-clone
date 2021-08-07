@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getStreams } from "../../actions/streams"
+import { Link } from "react-router-dom";
+
+import { getStreams } from "../../actions/streams";
+import { CREATE_NEW_STREAM_PATH } from "../../const";
 
 class StreamList extends Component {
     componentDidMount() {
@@ -19,6 +22,20 @@ class StreamList extends Component {
                 <div className="right floated content">
                     <button className="ui button">Edit</button>
                     <button className="ui button">Remove</button>
+                </div>
+            );
+        }
+
+        return "";
+    }
+
+    renderCreateStreamButtonTry() {
+        const { isUserSignedIn } = this.props;
+
+        if (isUserSignedIn) {
+            return (
+                <div>
+                    <Link to={CREATE_NEW_STREAM_PATH()} />
                 </div>
             );
         }
@@ -56,9 +73,10 @@ class StreamList extends Component {
 }
 
 // turn objects into array for easier mapping
-const mapStateToProps = ({ streams, auth: { userId } }) => ({
+const mapStateToProps = ({ streams, auth: { userId, isSignedIn } }) => ({
     streams: Object.values(streams),
-    currentLoggedInUserId: userId
+    currentLoggedInUserId: userId,
+    isUserSignedIn: isSignedIn
 });
 
 export default connect(mapStateToProps, { getStreams })(StreamList);
