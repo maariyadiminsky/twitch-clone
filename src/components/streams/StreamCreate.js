@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends Component {
-    renderInput({ label, input}) {
+    renderInputError = (error, touched) => error && touched && <div>{error}</div>;
+
+    renderInput = ({ label, input, meta: { error, touched } }) => {
         return (
             <div className="field">
                 <label>{label}</label>
-                <input {...input}/>
+                <input {...input} autoComplete="off" />
+                {this.renderInputError(error, touched)}
             </div>
         );
     }
 
     onSubmit(formValues) {
-
     }
 
     render() {
@@ -34,13 +36,13 @@ const validate = ({ title, description }) => {
     }
 
     if (!description) {
-        errors.title = "Please tell us a bit about your Stream"
+        errors.description = "Please tell us a bit about your Stream"
     }
 
     return errors;
 }
 
 export default reduxForm({
-    form: "streamCreate"
-
+    form: "streamCreate",
+    validate
 })(StreamCreate);
