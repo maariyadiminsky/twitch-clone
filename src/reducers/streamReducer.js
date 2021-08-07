@@ -1,4 +1,4 @@
-import { omit } from "lodash";
+import { omit, mapKeys } from "lodash";
 
 import { 
     CREATE_STREAM,
@@ -15,7 +15,7 @@ export default (state = {}, { type, payload }) => {
         case GET_STREAM:
             return { ...state, [payload.id]: payload };
         case GET_STREAMS:
-            return { ...state, ...payload };
+            return { ...state, ...mapKeys(payload, "id") };
         case DELETE_STREAM:
             return omit(state, payload);
         default:
