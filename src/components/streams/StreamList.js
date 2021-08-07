@@ -32,10 +32,12 @@ class StreamList extends Component {
     renderCreateStreamButtonTry() {
         const { isUserSignedIn } = this.props;
 
+        console.log(isUserSignedIn);
+
         if (isUserSignedIn) {
             return (
-                <div>
-                    <Link to={CREATE_NEW_STREAM_PATH()} />
+                <div style={{ textAlign: "right" }}>
+                    <Link className="ui button inverted red" to={CREATE_NEW_STREAM_PATH}>Create Stream</Link>
                 </div>
             );
         }
@@ -67,16 +69,17 @@ class StreamList extends Component {
                 <div className="ui celled list">
                     {this.renderStreams()}
                 </div>
+                {this.renderCreateStreamButtonTry()}
             </div>
         );
     }
 }
 
 // turn objects into array for easier mapping
-const mapStateToProps = ({ streams, auth: { userId, isSignedIn } }) => ({
+const mapStateToProps = ({ streams, auth: { userId, isUserSignedIn } }) => ({
     streams: Object.values(streams),
     currentLoggedInUserId: userId,
-    isUserSignedIn: isSignedIn
+    isUserSignedIn
 });
 
 export default connect(mapStateToProps, { getStreams })(StreamList);

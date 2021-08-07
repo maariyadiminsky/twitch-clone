@@ -1,5 +1,3 @@
-import { FindBaseURL } from "../utils";
-
 // general
 export const LOADING = "Loading...";
 
@@ -9,7 +7,7 @@ export const SIGN_IN = "Sign In";
 export const SIGN_OUT = "Sign Out";
 
 // paths
-export const CREATE_NEW_STREAM_PATH = () => `${FindBaseURL()}/streams/new`;
+export const CREATE_NEW_STREAM_PATH = "streams/new";
 
 // .env
 export const PRODUCTION = "production";
