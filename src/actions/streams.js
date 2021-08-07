@@ -10,8 +10,9 @@ import {
 } from "./types";
 
 export const createStream = (formValues) => (
-    async(dispatch) => {
-        const response = await streamsAPI.post(STREAMS_ENDPOINT, formValues);
+    async(dispatch, getState) => {
+        const { userId } = getState().auth;
+        const response = await streamsAPI.post(STREAMS_ENDPOINT, { ...formValues, userId });
 
         dispatch({
             type: CREATE_STREAM,
