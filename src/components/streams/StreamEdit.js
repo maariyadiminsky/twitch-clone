@@ -3,11 +3,11 @@ import { getStream, editStream } from "../../actions/streams";
 import { connect } from "react-redux";
 
 import StreamForm from "./StreamForm";
-import { RESPONSE_STATUS_SUCCESS } from "../../const";
+import { STREAMS_LIST_PATH, RESPONSE_STATUS_SUCCESS } from "../../const";
 
 class StreamEdit extends Component {
     componentDidMount() {
-        const { stream, getStream, match: { params: { id }} } = this.props;
+        const { stream, id, getStream } = this.props;
 
         if (!stream) getStream(id);
     }
@@ -20,7 +20,7 @@ class StreamEdit extends Component {
         and based on the issue show a clear warning message 
     */
     editStream(id, formValues)
-        .then(({ status }) => status === RESPONSE_STATUS_SUCCESS && history.push("/"))
+        .then(({ status }) => status === RESPONSE_STATUS_SUCCESS && history.push(STREAMS_LIST_PATH))
         .catch(error => console.log(error));
     }
 
@@ -48,7 +48,8 @@ class StreamEdit extends Component {
 }
 
 const mapStateToProps = ({ streams }, ownProps) => ({ 
-    stream: streams[ownProps.match.params.id]
+    stream: streams[ownProps.match.params.id],
+    id: ownProps.match.params.id
 });
 
 export default connect(mapStateToProps, { getStream, editStream })(StreamEdit);

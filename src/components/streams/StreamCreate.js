@@ -4,7 +4,7 @@ import { createStream } from "../../actions/streams";
 
 import StreamForm from "./StreamForm";
 
-import { RESPONSE_STATUS_CREATED } from "../../const";
+import { STREAMS_LIST_PATH, RESPONSE_STATUS_CREATED } from "../../const";
 
 const StreamCreate = ({ createStream, history }) => {
     const handleOnSubmit = (formValues) => {
@@ -14,7 +14,7 @@ const StreamCreate = ({ createStream, history }) => {
             and based on the issue show a clear warning message 
         */
         createStream(formValues)
-            .then(({status}) => status === RESPONSE_STATUS_CREATED && history.push("/"))
+            .then(({status}) => status === RESPONSE_STATUS_CREATED && history.push(STREAMS_LIST_PATH))
             .catch(error => console.log(error));
     }
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getStreams, deleteStream } from "../../actions/streams";
-import { CREATE_NEW_STREAM_PATH, EDIT_STREAM_PATH } from "../../const";
+import { CREATE_NEW_STREAM_PATH, EDIT_STREAM_PATH, DELETE_STREAM_PATH } from "../../const";
 
 class StreamList extends Component {
     componentDidMount() {
@@ -26,12 +26,12 @@ class StreamList extends Component {
                     >
                         Edit
                     </Link>
-                    <button 
+                    <Link 
                         className="ui button" 
-                        onClick={() => deleteStream(streamId)}
+                        to={DELETE_STREAM_PATH(streamId)}
                     >
                         Remove
-                    </button>
+                    </Link>
                 </div>
             );
         }
