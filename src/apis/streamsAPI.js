@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { FindBaseURL } from "../utils";
+import { findBaseURL } from "../utils";
 
 export default axios.create({
-    baseURL: FindBaseURL()
+    baseURL: findBaseURL()
 });
