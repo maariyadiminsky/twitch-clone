@@ -32,8 +32,6 @@ class StreamList extends Component {
     renderCreateStreamButtonTry() {
         const { isUserSignedIn } = this.props;
 
-        console.log(isUserSignedIn);
-
         if (isUserSignedIn) {
             return (
                 <div style={{ textAlign: "right" }}>
