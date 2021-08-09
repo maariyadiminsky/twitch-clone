@@ -5,6 +5,16 @@ import Modal from "../Modal";
 import { STREAMS_LIST_PATH, RESPONSE_STATUS_SUCCESS } from "../../const";
 import { getStream, deleteStream } from "../../actions/streams";
 
+const contentStyleObject = {
+    fontSize: 15,
+    textAlign: "center"
+}
+
+const titleStyleObject = {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold"
+}
 class StreamDelete extends Component {
     componentDidMount() {
         const { stream, id, getStream } = this.props;
@@ -25,6 +35,15 @@ class StreamDelete extends Component {
         .catch(error => console.log(error));
     }
 
+    renderContent(title) {
+        return (
+            <div style={contentStyleObject}>
+                Are you sure you want to delete this stream?
+                <p style={titleStyleObject}>{title}</p>
+            </div>
+        )
+    }
+
     render() {
         const { stream, history } = this.props;
 
@@ -36,7 +55,7 @@ class StreamDelete extends Component {
             <div>
              <Modal 
                 header="Delete Stream"
-                content="Are you sure you want to delete this stream?"
+                content={this.renderContent(stream.title)}
                 cancelButtonText="Nevermind"
                 confirmButtonText="Yes, I'm sure"
                 handleConfirm={this.handleDeleteStream}
