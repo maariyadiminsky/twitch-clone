@@ -25,12 +25,14 @@ export const createStream = (formValues) => (
 
 export const deleteStream = (id) => (
     async(dispatch) => {
-        await streamsAPI.delete(STREAM_ENDPOINT(id));
+        const response = await streamsAPI.delete(STREAM_ENDPOINT(id));
 
         dispatch({
             type: DELETE_STREAM,
             payload: id
         });
+
+        return response;
     }
 );
 
@@ -55,8 +57,6 @@ export const getStream = (id) => (
             type: GET_STREAM,
             payload: response.data
         });
-
-        return response;
     }
 );
 
