@@ -18,7 +18,7 @@ const Modal = ({ header, content, cancelButtonText, confirmButtonText, history, 
 
     return createPortal(
         <div onClick={handleCancel} className="ui dimmer modals visible active">
-            <div className="ui tiny modal visible active">
+            <div className="ui standard modal visible active">
                 <div className="header">{header}</div>
                 <div className="content">{content}</div>
                 <div className="actions">
