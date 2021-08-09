@@ -11,8 +11,8 @@ import {
 export default (state = {}, { type, payload }) => {
     switch(type) {
         case CREATE_STREAM:
-        case EDIT_STREAM:
         case GET_STREAM:
+            case EDIT_STREAM:
             return { ...state, [payload.id]: payload };
         case GET_STREAMS:
             return { ...state, ...mapKeys(payload, "id") };

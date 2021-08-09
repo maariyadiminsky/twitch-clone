@@ -36,12 +36,14 @@ export const deleteStream = (id) => (
 
 export const editStream = (id, formValues) => (
     async(dispatch) => {
-        const response = await streamsAPI.post(STREAM_ENDPOINT(id), formValues);
+        const response = await streamsAPI.patch(STREAM_ENDPOINT(id), formValues);
 
         dispatch({
             type: EDIT_STREAM,
             payload: response.data
         });
+
+        return response;
     }
 );
 

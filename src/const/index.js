@@ -12,6 +12,7 @@ export const EDIT_STREAM_PATH = (id) => `/streams/edit/${id}`;
 
 // response status codes
 export const RESPONSE_STATUS_CREATED = 201;
+export const RESPONSE_STATUS_SUCCESS = 200;
 
 // .env
 export const PRODUCTION = "production";

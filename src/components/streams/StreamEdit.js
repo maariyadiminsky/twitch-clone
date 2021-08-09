@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { getStreams, getStream } from "../../actions/streams";
+import { getStream, editStream } from "../../actions/streams";
 import { connect } from "react-redux";
+
+import StreamForm from "./StreamForm";
+import { RESPONSE_STATUS_SUCCESS } from "../../const";
 
 class StreamEdit extends Component {
     componentDidMount() {
@@ -9,8 +12,16 @@ class StreamEdit extends Component {
         if (!stream) getStream(id);
     }
 
-    renderStream() {
-        const { stream } = this.props;
+    handleOnSubmit = (formValues) => {
+        const { stream: { id }, editStream, history } = this.props;
+    /*  
+        todo: handle error better here
+        see if the issue is related to internet connection etc.
+        and based on the issue show a clear warning message 
+    */
+    editStream(id, formValues)
+        .then(({ status }) => status === RESPONSE_STATUS_SUCCESS && history.push("/"))
+        .catch(error => console.log(error));
     }
 
     render() {
@@ -21,10 +32,17 @@ class StreamEdit extends Component {
         }
 
         return (
-            <div>
-                StreamEdit
-                {this.renderStream()}
-            </div>
+            <StreamForm 
+                initialValues={{
+                    title: stream.title,
+                    description: stream.description
+                }}
+                formTitle="Edit your Stream"
+                fieldTitle="Edit title"
+                fieldDescription="Edit Description"
+                buttonText="Update Stream"
+                handleOnSubmit={this.handleOnSubmit}
+            />
         );
     }
 }
@@ -33,4 +51,4 @@ const mapStateToProps = ({ streams }, ownProps) => ({
     stream: streams[ownProps.match.params.id]
 });
 
-export default connect(mapStateToProps, { getStream })(StreamEdit);
+export default connect(mapStateToProps, { getStream, editStream })(StreamEdit);
