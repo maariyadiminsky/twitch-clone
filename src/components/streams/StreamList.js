@@ -56,6 +56,10 @@ class StreamList extends Component {
     renderStreams() {
         const { streams } = this.props;
 
+        if (streams.length === 0) {
+            return <div>No streams yet! Try creating one.</div>
+        }
+
         return streams.map(({ id, title, description, userId }) => (
             <div className="item" key={id}>
                 {this.renderActionButtonsTry(id, userId)}
