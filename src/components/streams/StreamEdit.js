@@ -11,11 +11,15 @@ class StreamEdit extends Component {
 
     renderStream() {
         const { stream } = this.props;
-
-        console.log("here", stream);
     }
 
     render() {
+        const { stream } = this.props;
+
+        if (!stream) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div>
                 StreamEdit

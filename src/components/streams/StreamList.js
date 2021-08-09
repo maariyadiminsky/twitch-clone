@@ -71,6 +71,12 @@ class StreamList extends Component {
     }
 
     render() {
+        const { streams } = this.props;
+
+        if (!streams) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div>
                 <h2>Streams</h2>
