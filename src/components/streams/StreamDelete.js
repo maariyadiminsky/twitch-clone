@@ -26,7 +26,11 @@ class StreamDelete extends Component {
     }
 
     render() {
-        const { history } = this.props;
+        const { stream, history } = this.props;
+
+        if (!stream) {
+            return <div>Loading...</div>;
+        }
 
         return (
             <div>
