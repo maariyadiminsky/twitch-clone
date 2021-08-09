@@ -6,6 +6,6 @@ const StreamDelete = () => {
          StreamDelete
         </div>
     );
-};
+}
 
 export default StreamDelete;

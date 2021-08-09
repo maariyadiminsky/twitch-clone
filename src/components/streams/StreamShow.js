@@ -6,6 +6,6 @@ const StreamShow = () => {
          StreamShow
         </div>
     );
-};
+}
 
 export default StreamShow;
