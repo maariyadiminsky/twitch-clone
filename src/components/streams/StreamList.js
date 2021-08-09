@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getStreams } from "../../actions/streams";
-import { CREATE_NEW_STREAM_PATH } from "../../const";
+import { getStreams, deleteStream } from "../../actions/streams";
+import { CREATE_NEW_STREAM_PATH, EDIT_STREAM_PATH } from "../../const";
 
 class StreamList extends Component {
     componentDidMount() {
@@ -14,14 +14,24 @@ class StreamList extends Component {
 
     // if the incoming stream has the same userId as the
     // current logged in user--render the buttons
-    renderActionButtonsTry(streamUserId){
-        const { currentLoggedInUserId } = this.props;
+    renderActionButtonsTry(streamId, streamUserId){
+        const { currentLoggedInUserId, deleteStream } = this.props;
 
         if (currentLoggedInUserId === streamUserId) {
             return (
                 <div className="right floated content">
-                    <button className="ui button">Edit</button>
-                    <button className="ui button">Remove</button>
+                    <Link 
+                        className="ui button" 
+                        to={EDIT_STREAM_PATH(streamId)}
+                    >
+                        Edit
+                    </Link>
+                    <button 
+                        className="ui button" 
+                        onClick={() => deleteStream(streamId)}
+                    >
+                        Remove
+                    </button>
                 </div>
             );
         }
@@ -48,7 +58,7 @@ class StreamList extends Component {
 
         return streams.map(({ id, title, description, userId }) => (
             <div className="item" key={id}>
-                {this.renderActionButtonsTry(userId)}
+                {this.renderActionButtonsTry(id, userId)}
                 <i className="large middle aligned icon tv" />
                 <div className="content">
                     {title}
@@ -80,4 +90,4 @@ const mapStateToProps = ({ streams, auth: { userId, isUserSignedIn } }) => ({
     isUserSignedIn
 });
 
-export default connect(mapStateToProps, { getStreams })(StreamList);
+export default connect(mapStateToProps, { getStreams, deleteStream })(StreamList);

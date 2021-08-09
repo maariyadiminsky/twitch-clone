@@ -25,7 +25,7 @@ export const createStream = (formValues) => (
 
 export const deleteStream = (id) => (
     async(dispatch) => {
-        await streamsAPI.post(STREAM_ENDPOINT(id));
+        await streamsAPI.delete(STREAM_ENDPOINT(id));
 
         dispatch({
             type: DELETE_STREAM,

@@ -8,6 +8,7 @@ export const SIGN_OUT = "Sign Out";
 
 // paths
 export const CREATE_NEW_STREAM_PATH = "streams/new";
+export const EDIT_STREAM_PATH = (id) => `/streams/edit/${id}`;
 
 // response status codes
 export const RESPONSE_STATUS_CREATED = 201;

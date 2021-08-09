@@ -28,7 +28,6 @@ class StreamCreate extends Component {
 
     onSubmit = (formValues) => {
         const { createStream, history } = this.props;
-
         /*  
             todo: handle error better here
             see if the issue is related to internet connection etc.
