@@ -3,6 +3,8 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { createStream } from "../../actions/streams";
 
+import { RESPONSE_STATUS_CREATED } from "../../const";
+
 class StreamCreate extends Component {
     renderInputError(error) {
         return (
@@ -25,9 +27,16 @@ class StreamCreate extends Component {
     }
 
     onSubmit = (formValues) => {
-        const { createStream } = this.props;
+        const { createStream, history } = this.props;
 
-        createStream(formValues);
+        /*  
+            todo: handle error better here
+            see if the issue is related to internet connection etc.
+            and based on the issue show a clear warning message 
+        */
+        createStream(formValues)
+            .then(({status}) => status === RESPONSE_STATUS_CREATED && history.push("/"))
+            .catch(error => console.log(error));
     }
 
     render() {

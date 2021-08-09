@@ -17,7 +17,9 @@ export const createStream = (formValues) => (
         dispatch({
             type: CREATE_STREAM,
             payload: response.data
-        })
+        });
+
+        return response;
     }
 );
 
@@ -28,7 +30,7 @@ export const deleteStream = (id) => (
         dispatch({
             type: DELETE_STREAM,
             payload: id
-        })
+        });
     }
 );
 
@@ -39,7 +41,7 @@ export const editStream = (id, formValues) => (
         dispatch({
             type: EDIT_STREAM,
             payload: response.data
-        })
+        });
     }
 );
 
@@ -50,7 +52,7 @@ export const getStream = (id) => (
         dispatch({
             type: GET_STREAM,
             payload: response.data
-        })
+        });
     }
 );
 
@@ -61,6 +63,6 @@ export const getStreams = () => (
         dispatch({
             type: GET_STREAMS,
             payload: response.data
-        })
+        });
     }
 );
