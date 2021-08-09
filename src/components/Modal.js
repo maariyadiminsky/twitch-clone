@@ -2,13 +2,12 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 import { stopEventPropagationTry } from "../utils";
-import { STREAMS_LIST_PATH } from "../const";
 
-const Modal = ({ header, content, cancelButtonText, confirmButtonText, history, handleConfirm }) => {
+const Modal = ({ header, content, cancelButtonText, confirmButtonText, history, handleConfirm, customCancelPath }) => {
     const handleCancel = (event) => {
         stopEventPropagationTry(event);
 
-        history.push(STREAMS_LIST_PATH);
+        history.push(customCancelPath);
     }
 
     const handleConfirmButton = (event) => {

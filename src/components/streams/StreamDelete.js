@@ -36,6 +36,7 @@ class StreamDelete extends Component {
                 cancelButtonText="Nevermind"
                 confirmButtonText="Yes, I'm sure"
                 handleConfirm={this.handleDeleteStream}
+                customCancelPath={STREAMS_LIST_PATH}
                 history={history}
             />
             </div>
