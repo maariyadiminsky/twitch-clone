@@ -27,9 +27,12 @@ class StreamShow extends Component {
         }
     }
 
-    // Setup stream url--stream key should be the stream id for this to work.
-    // Setup via your OBS application here:
-    // https://github.com/illuspas/Node-Media-Server#from-obs
+    componentWillUnmount() {
+        // note: tells flv player to stop streaming
+        // and removes attachment to the video
+        this.videoPlayer.destroy();
+    }
+
     setupFLVPlayer(streamId) {
         // create flv player
         this.videoPlayer = flv.createPlayer({
