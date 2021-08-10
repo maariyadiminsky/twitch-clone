@@ -9,7 +9,7 @@ export const SIGN_OUT = "Sign Out";
 // paths
 export const STREAMS_LIST_PATH = "/";
 export const CREATE_NEW_STREAM_PATH = "streams/new";
-export const SHOW_STREAM_PATH = (id) => `/streams/show/${id}`;
+export const SHOW_STREAM_PATH = (id) => `/streams/${id}`;
 export const EDIT_STREAM_PATH = (id) => `/streams/edit/${id}`;
 export const DELETE_STREAM_PATH = (id) => `/streams/delete/${id}`;
 
