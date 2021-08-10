@@ -17,6 +17,10 @@ export const DELETE_STREAM_PATH = (id) => `/streams/delete/${id}`;
 export const RESPONSE_STATUS_CREATED = 201;
 export const RESPONSE_STATUS_SUCCESS = 200;
 
+// flv and rtmp-server
+export const FLV_STREAM_URL = (streamId) => `http://localhost:8000/live/${streamId}.flv`;
+export const VIDEO_TYPE_FLV = "flv";
+
 // .env
 export const PRODUCTION = "production";
 export const DEVELOPMENT = "development";
