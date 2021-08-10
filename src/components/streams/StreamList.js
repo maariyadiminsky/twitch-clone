@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getStreams} from "../../actions/streams";
-import { CREATE_NEW_STREAM_PATH, EDIT_STREAM_PATH, DELETE_STREAM_PATH } from "../../const";
+import { 
+    SHOW_STREAM_PATH, 
+    CREATE_NEW_STREAM_PATH, 
+    EDIT_STREAM_PATH, 
+    DELETE_STREAM_PATH 
+} from "../../const";
 
 class StreamList extends Component {
     componentDidMount() {
@@ -65,7 +70,12 @@ class StreamList extends Component {
                 {this.renderActionButtonsTry(id, userId)}
                 <i className="large middle aligned icon tv" />
                 <div className="content">
-                    {title}
+                    <Link
+                        className="header" 
+                        to={SHOW_STREAM_PATH(id)}
+                    >
+                        {title}
+                    </Link>
                     <div className="description">
                         {description}
                     </div>
