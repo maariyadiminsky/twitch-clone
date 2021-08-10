@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createStream } from "../../actions/streams";
 
 import StreamForm from "./StreamForm";
-
+import { createStream } from "../../actions/streams";
 import { STREAMS_LIST_PATH, RESPONSE_STATUS_CREATED } from "../../const";
 
 const StreamCreate = ({ createStream, history }) => {

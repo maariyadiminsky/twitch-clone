@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getStream, editStream } from "../../actions/streams";
 import { connect } from "react-redux";
 
 import StreamForm from "./StreamForm";
+import { getStream, editStream } from "../../actions/streams";
 import { STREAMS_LIST_PATH, RESPONSE_STATUS_SUCCESS } from "../../const";
 
 class StreamEdit extends Component {
