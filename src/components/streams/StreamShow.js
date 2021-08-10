@@ -21,7 +21,7 @@ class StreamShow extends Component {
         if (!stream) {
             getStream(id)
             .then(() => this.setupFLVPlayer(id))
-            .error((error) => console.log(error));
+            .catch((error) => console.log(error));
         } else {
             this.setupFLVPlayer(id);
         }
