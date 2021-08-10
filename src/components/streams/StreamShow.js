@@ -19,7 +19,8 @@ class StreamShow extends Component {
         
         return (
             <div>
-             StreamShow
+             <h1>{stream.title}</h1>
+             <p>{stream.description}</p>
             </div>
         );
     }
