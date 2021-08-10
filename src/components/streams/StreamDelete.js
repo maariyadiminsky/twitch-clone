@@ -5,12 +5,12 @@ import Modal from "../Modal";
 import { STREAMS_LIST_PATH, RESPONSE_STATUS_SUCCESS } from "../../const";
 import { getStream, deleteStream } from "../../actions/streams";
 
-const contentStyleObject = {
+const contentStyles = {
     fontSize: 15,
     textAlign: "center"
 }
 
-const titleStyleObject = {
+const titleStyles = {
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold"
@@ -37,9 +37,9 @@ class StreamDelete extends Component {
 
     renderContent(title) {
         return (
-            <div style={contentStyleObject}>
+            <div style={contentStyles}>
                 Are you sure you want to delete this stream?
-                <p style={titleStyleObject}>{title}</p>
+                <p style={titleStyles}>{title}</p>
             </div>
         )
     }

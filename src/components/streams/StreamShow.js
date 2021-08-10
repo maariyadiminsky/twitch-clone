@@ -4,7 +4,16 @@ import { connect } from "react-redux";
 
 import { getStream } from "../../actions/streams";
 
+const videoStyles = {
+    width: "100%"
+}
 class StreamShow extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.videoRef = React.createRef();
+    }
+
     componentDidMount() {
         const { stream, id, getStream } = this.props;
 
@@ -20,8 +29,13 @@ class StreamShow extends Component {
         
         return (
             <div>
-             <h1>{stream.title}</h1>
-             <h5>{stream.description}</h5>
+                <video 
+                    style={videoStyles} 
+                    ref={this.videoRef} 
+                    controls
+                />
+                <h1>{stream.title}</h1>
+                <h5>{stream.description}</h5>
             </div>
         );
     }
