@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import flv from "flv.js";
 import { connect } from "react-redux";
 
 import { getStream } from "../../actions/streams";
@@ -20,7 +21,7 @@ class StreamShow extends Component {
         return (
             <div>
              <h1>{stream.title}</h1>
-             <p>{stream.description}</p>
+             <h5>{stream.description}</h5>
             </div>
         );
     }
