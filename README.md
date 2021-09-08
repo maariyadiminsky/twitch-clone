@@ -2,7 +2,7 @@
 
 This is more like boilerplate code created for the [updated version here](https://github.com/maariyadiminsky/video-streamer).
 
-Although the project is called “twitch-clone” I was never intending to make an exact clone of Twitch—rather a Twitch-inspired CRUD project to review some older React syntax(ie. not using React-Hooks etc. here) and learn how to setup streaming video through my own app for fun!
+Although the project is called “twitch-clone” I was never intending to make an exact clone of Twitch—rather rather a Twitch-inspired CRUD project to learn how to setup streaming video.
 
 This project is less focused on styles and more on functionality.
 There is another version of this project with more updated code, better styling(soon). It also includes the api mock server and rtmp server needed to run everything together. 
